@@ -1,0 +1,186 @@
+@media (max-width: 1240px){
+    body{
+        background-image: url('../img/bg-laptop.svg');
+    }
+    .container{
+        --width: 880px;
+    }
+
+    .hero{
+        padding-bottom: 30px;
+    }
+
+    .hero__title{
+        max-width: 680px;
+        font-size: 64px;
+        margin-bottom: 15px;
+    }
+
+    .hero__cup_orange{
+        margin-top: -50px;
+    }
+
+    .goods__list{
+        grid-template-columns: repeat(3, 280px);
+    }
+}
+
+@media (max-width: 940px){
+    body{
+        background-image: url('../img/bg-tablet.svg');
+    }
+
+    .container{
+        --width: 608px;
+        --padding: 15px;
+    }
+
+    .btn{
+        padding: 8px 20px;
+        font-size: 14px;
+        box-shadow: 0px 2px 10px 0px #FA5A5A
+    }
+
+    .hero {
+        padding: 20px 0;
+    }
+
+    .hero__title{
+        max-width: 468px;
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .hero__cups{
+        padding-top: 100px;
+    }
+
+    .hero__cup_orange{
+        margin-top: -35px;
+    }
+
+    .goods__title{
+        margin-bottom: 16px;
+        gap: 16px;
+    }
+
+    .goods__list{
+        grid-template-columns: repeat(4, 140px);
+    }
+
+    .cocktail{
+        border-radius: 12px;
+        padding: 8px;
+    }
+
+    .cocktail__img{
+        border-radius: 12px;
+    }  
+    
+    .cocktail__content{
+        margin-top: 8px;
+        padding: 0;
+    }
+
+    .cocktail__text{
+        flex-direction: column;
+    }
+
+    .cocktail__title{
+        font-size: 14px;
+    }
+
+    .cocktail__information{
+        margin: 8px 0 16px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cocktail__price {
+        font-size: 14px;
+    }
+
+    .cocktail__size {
+        font-size: 10px;
+    }
+
+    .footer{
+        margin-bottom: 24px;
+    }
+
+    .footer__copyright{
+        font-size: 14px;
+    }
+
+    .footer__developer-item{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 640px){
+    body{
+        background-image: url('../img/bg-mobile.svg');
+    }  
+    
+    .header{
+        padding: 31px 0;
+    }
+
+    .header__logo{
+        width: 120px;
+    }
+
+    .header__btn{
+        display: none;
+    }
+
+    .header__btn-order{
+        margin-right: 0;
+    }
+
+    .hero{
+        padding-top: 0;
+    }
+
+    .hero__title{
+        margin-bottom: 120px;
+        font-size: 36px;
+    }
+
+    .hero__cups{
+        display: none;
+    }
+
+    .goods {
+        padding: 40px 0 30px;
+    }
+
+    .goods__list{
+        grid-template-columns: repeat(3, 140px);
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .footer__img{
+        width: 120px;
+    }
+
+    .footer__developer {
+        justify-self: start;
+    }
+
+    .footer__container{
+        gap: 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        'logo'
+        'coopyright'
+        'developer';
+    }
+}
+
+@media (max-width: 465px){
+    .goods__list{
+        grid-template-columns: repeat(2, 140px);
+    }
+}

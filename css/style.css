@@ -1,0 +1,290 @@
+/* mulish-regular - cyrillic_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/mulish-v12-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+  /* mulish-600 - cyrillic_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/mulish-v12-cyrillic_latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+  /* mulish-900 - cyrillic_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/mulish-v12-cyrillic_latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+
+body{
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: "Mulish", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #000;
+    background: #F8E8E2 url('../img/bg.svg') no-repeat top/contain;
+}
+
+button{
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1, h2, h3, p, fieldset{
+    margin: 0;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    --width: 1180px;
+    --padding: 30px;
+    max-width: calc(var(--width) + (var(--padding) * 2));
+    margin: 0 auto;
+    padding: 0 var(--padding);
+}
+
+.btn{
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 40px;
+    background: #F44;
+    box-shadow: 0px 4px 20px 0px #FA5A5A;
+}
+
+.btn:hover{
+    background:#FF6767;
+}
+
+.text-red {
+    color: #F44;
+}
+
+/** header */
+.header {
+    padding: 36px 0;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.header__btn-order{
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.header__btn-count{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    top: 0;
+    right: 1px;
+    border-radius: 50%;
+    background:#F44;
+    border:2px solid #F8E8E2;
+}
+
+.header__btn {
+    display: block;
+}
+
+/* *hero */
+
+.hero {
+    padding: 30px 0;
+}
+
+.hero__title {
+    margin-bottom: 70px;
+    max-width: 880px;
+    font-size: 84px;
+    font-weight: 900;
+    line-height: 1.1; 
+}
+
+.hero__cups {
+    padding-top: 200px;
+    display: flex;
+    align-self: flex-end;
+    gap: 20px;
+}
+.hero__cup {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 24px;
+}
+.hero__cup_pink {
+    background: #FF196C;
+}
+
+.hero__cup_green {
+    background: #34B905;
+}
+.hero__cup_orange {
+    margin-top: -70px;
+    background: #FFB72A;
+    align-self: flex-start;
+}
+
+.hero__img {
+    position: absolute;
+    width: 55%;
+    bottom: 13%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* *goods */
+
+.goods {
+    padding: 60px 0 70px;
+}
+
+.goods__title {
+    margin-bottom: 40px;
+    font-size: 44px;
+}
+.goods__list {
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    gap: 20px;
+}
+
+.cocktail {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 32px;
+    background: #fff;
+    height: 100%;
+}
+.cocktail__img{
+    width: 100%;
+    border-radius: 24px;
+}
+
+.cocktail__title{
+    font-weight: 400;
+    max-width: 152px;
+}
+
+.cocktail__content{
+    flex-grow: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cocktail__text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cocktail__information{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.cocktail__title{
+    max-width: 155px;
+}
+
+.cocktail__price {
+    margin-bottom: 2px;
+    color: #F44;
+}
+
+.cocktail__size {
+    color: #C1C1C1;
+    font-size: 12px;
+}
+.cocktail__btn {
+    margin-top: auto;
+}
+
+/* *footer */
+
+.footer {
+    padding: 30px 0 32px;
+}
+
+.footer__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    grid-template-areas: 
+    'logo .'
+    'coopyright developer';
+}
+
+.footer__img {
+    grid-area: logo;
+}
+.footer__copyright {
+    grid-area: coopyright;
+}
+.footer__developer {
+    grid-area: developer;
+    justify-self: end;
+}
+.footer__developer-item {
+    margin-bottom: 10px;
+}
+
+.footer__developer-item:last-child{
+    margin-bottom: 0;
+}
