@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshy Bar</title>
-    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin> -->
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
-    <script src="js/script.js" ></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -52,7 +52,7 @@
                 <h2 class="goods__title">Меню</h2>
                 <ul class="goods__list">
                     <li class="goods__item">
-                        <div class="goods_card cocktail">
+                        <article class="cocktail">
                             <img src="img/make-your-own.png" alt="Коктейль собери сам" class="cocktail__img">
                             <div class="cocktail__content">
                                 <div class="cocktail__text">
@@ -62,121 +62,9 @@
                                         <p class="cocktail__size">300мл</p>
                                     </div>
                                 </div>
-                                <button class="btn cocktail__btn">Добавить</button>
+                                <button class="btn cocktail__btn_yourself">Добавить</button>
                             </div>   
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/1.png" alt="Коктейль клубника" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Клубника</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">270 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/2.png" alt="Коктейль лесные ягоды" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Лесные ягоды</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">280 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/3.png" alt="Коктейль лайм и мята" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Лайм и мята</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">260 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/4.png" alt="Коктейль банан" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Банан</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">260 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/5.png" alt="Коктейль киви и яблоко" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Киви и яблоко</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">290 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/6.png" alt="Коктейль манго" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Манго</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">380 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    <li class="goods__item">
-                        <div class="goods_card cocktail">
-                            <img src="img/7.png" alt="Коктейль маракуйя" class="cocktail__img">
-                            <div class="cocktail__content">
-                                <div class="cocktail__text">
-                                    <h3 class="cocktail__title">Маракуйя</h3>
-                                    <div class="cocktail__information">
-                                        <p class="cocktail__price">340 ₽</p>
-                                        <p class="cocktail__size">300мл</p>
-                                    </div>
-                                </div>
-                                <button class="btn cocktail__btn">Добавить</button>
-                            </div>
-                            
-                        </div>
+                        </article>
                     </li>
                 </ul>
             </div>
@@ -196,5 +84,159 @@
             </ul>
         </div>
     </footer>
+    <div class="modal modal_order">
+        <div class="modal__main modal__main_order">
+            <div class="order">
+                <h2 class="order__title">Корзина<sup class="text-red">(2)</sup></h2>
+                <ul class="order__list">
+                    <li class="order__item">
+                        <img src="img/1.png" alt="Коктейль" class="order__img">
+
+                        <div class="order__info">
+                            <h3 class="order__name">Манго смузи</h3>
+                            <ul class="order__topping-list">
+                                <li class="order__topping-item">300мл</li>
+                                <li class="order__topping-item">Биоразлагаемый стакан</li>
+                                <li class="order__topping-item">Лед</li>
+                                <li class="order__topping-item">Мята</li>
+                            </ul>
+                        </div>
+
+                        <button class="order__item-delete" aria-label="Удалить коктейл из корзины"></button>
+                        <p class="order__item-price">380&nbsp;₽</p>
+
+                    </li>
+                    <li class="order__item">
+                        <img src="img/make-your-own.png" alt="Коктейль" class="order__img">
+
+                        <div class="order__info">
+                            <h3 class="order__name">Конструктор: Банан, яблоко, киви</h3>
+                            <ul class="order__topping-list">
+                                <li class="order__topping-item">300мл</li>
+                                <li class="order__topping-item">Пластиковый стакан</li>
+                            </ul>
+                        </div>
+
+                        <button class="order__item-delete" aria-label="Удалить коктейл из корзины">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_103_31)">
+                                <path d="M12.9401 11.9821L18.4667 6.47024C18.5759 6.34304 18.633 6.17943 18.6265 6.0121C18.6201 5.84476 18.5505 5.68603 18.4318 5.56762C18.313 5.4492 18.1539 5.37984 17.9861 5.37337C17.8183 5.36691 17.6543 5.42383 17.5267 5.53275L12.0001 11.0446L6.4734 5.5261C6.34786 5.4009 6.1776 5.33057 6.00006 5.33057C5.82253 5.33057 5.65227 5.4009 5.52673 5.5261C5.40119 5.6513 5.33067 5.82111 5.33067 5.99817C5.33067 6.17523 5.40119 6.34504 5.52673 6.47024L11.0601 11.9821L5.52673 17.494C5.45694 17.5536 5.40026 17.627 5.36025 17.7095C5.32023 17.7919 5.29774 17.8818 5.2942 17.9734C5.29065 18.0649 5.30612 18.1562 5.33964 18.2416C5.37315 18.3269 5.42399 18.4044 5.48896 18.4692C5.55393 18.534 5.63163 18.5847 5.71718 18.6181C5.80273 18.6515 5.89429 18.6669 5.9861 18.6634C6.07791 18.6599 6.168 18.6374 6.25071 18.5975C6.33342 18.5576 6.40697 18.5011 6.46673 18.4315L12.0001 12.9196L17.5267 18.4315C17.6543 18.5404 17.8183 18.5973 17.9861 18.5909C18.1539 18.5844 18.313 18.515 18.4318 18.3966C18.5505 18.2782 18.6201 18.1195 18.6265 17.9521C18.633 17.7848 18.5759 17.6212 18.4667 17.494L12.9401 11.9821Z" fill="#D5B4A8"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_103_31">
+                                <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                                </defs>
+                                </svg>                                
+                        </button>
+                        <p class="order__item-price">950&nbsp;₽</p>
+
+                    </li>
+                </ul>
+                <div class="order__price">
+                    <p class="order__price-title">Итого:</p>
+                    <p class="order__total-price">950 ₽</p>
+                </div>
+
+                <form class="order__form">
+                    <label  class="order__label">
+                        <input type="text" placeholder="Ваше имя" class="order__input">
+                    </label>
+                    <label  class="order__label">
+                        <input type="text" placeholder="Телефон" class="order__input">
+                    </label>
+                    <button class="order__submit btn" aria-label="Заказать" type="submit">Заказать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal__constructor">
+        <div class="modal__main modal__main_constructor">
+            <form class="constructor">
+                <h2 class="constructor__title">Собери <span class="text-red">свой</span> смузи</h2>
+                <div class="constructor__main">
+                    <ul class="constructor__items">
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Клубника
+                            </label>
+                        </li>
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Банан
+                            </label>
+                        </li>
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Манго
+                            </label>
+                        </li>
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Киви
+                            </label>
+                        </li>
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Маракуйя
+                            </label>
+                        </li>
+                        <li class="constructor__item">
+                            <label class="constructor__label">
+                                <input name="additive" type="checkbox" class="constructor__checkbox">
+                                Яблоко
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="constructor__extra">
+                        <h3 class="constructor__extra_title">Дополнительно:</h3>
+                        <ul class="constructor__extra_list">
+                            <li class="constructor__extra_item">
+                                <label class="constructor__label">
+                                    <input name="extra" type="checkbox" class="constructor__checkbox">
+                                    Мята <span class="note">(+50&nbsp;₽)</span>
+                                </label>
+                            </li>
+                            <li class="constructor__extra_item">
+                                <label class="constructor__label">
+                                    <input name="extra" type="checkbox" class="constructor__checkbox">
+                                    Лед <span class="note">(+10&nbsp;₽)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="constructor__cup">
+                        <h3 class="constructor__extra_title">Стакан:</h3>
+                        <ul class="constructor__cup_list">
+                            <li class="constructor__cup_item">
+                                <label class="constructor__label">
+                                    <input name="cup" type="radio" class="constructor__radio">
+                                    Биоразлагаемый <span class="note">(+20&nbsp;₽)</span>
+                                </label>
+                            </li>
+                            <li class="constructor__cup">
+                                <label class="constructor__label">
+                                    <input name="cup" type="radio" class="constructor__radio">
+                                    Пластиковый <span class="note">(+0&nbsp;₽)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="constructor__btn_row">
+                    <button type="button" class="constructor__btn btn">Добавить</button>
+                    <div class="constructor__btn-info">
+                        <p class="constructor__btn-price">340 ₽</p>
+                        <p class="constructor__btn-size">300мл</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
