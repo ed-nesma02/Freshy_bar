@@ -271,6 +271,9 @@ img{
 .cocktail__btn {
     margin-top: auto;
 }
+.cocktail__btn_yourself{
+    margin-top: auto;
+}
 
 /* *footer */
 
@@ -313,7 +316,6 @@ img{
     background: rgba(0,0,0,0.5);
     display: flex;
     overflow-y: auto;
-    cursor: pointer;
 }
 
 .modal_order{
@@ -448,7 +450,7 @@ img{
 }
 
 .constructor__title{
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     font-size: 44px;
     font-weight: 900;
 }
@@ -463,6 +465,7 @@ img{
 }
 
 .constructor__items{
+    margin-top: 12px;
     grid-area: items;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -470,24 +473,80 @@ img{
 }
 
 .constructor__label{
+    position: relative;
+    display: block;
+    padding-left: 32px;
     margin-top: 20px;
-    display: flex;
-    width: 118px;
-    align-items: center;
+    line-height: 24px;
+    cursor: pointer;
 }
 
 .constructor__checkbox{
-    margin-right: 8px;
+    position: absolute;
+    appearance: none;
+    margin-left: -32px;
     width: 24px;
     height: 24px;
+    cursor: pointer;
+}
+
+.constructor__checkbox::before{
+    content: "";
+    position: absolute;
+    inset: 0;
     border-radius: 2px;
-    border: none;
+    background-color: #fff;
+}
+
+.constructor__checkbox::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 15px;
+    background-image: url("../img/check.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+}
+
+.constructor__checkbox:checked::after{
+    opacity: 1;
 }
 
 .constructor__radio{
-    margin-right: 8px;
+    position: absolute;
+    appearance: none;
+    margin-left: -32px;
+    cursor: pointer;
+}
+
+.constructor__radio::before{
+    content: "";
+    position: absolute;
+    inset: 0;
     width: 24px;
     height: 24px;
+    border-radius: 60px;
+    background-color: #FFF;
+}
+
+.constructor__radio::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/radiobtn.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+}
+
+.constructor__radio:checked::after{
+    opacity: 1;
 }
 
 .constructor__extra{
@@ -513,4 +572,29 @@ img{
 .constructor__btn_row{
     margin-top: 40px;
     display: flex;
+    align-items: center;
+}
+
+.constructor__btn{
+    width: 232px;
+}
+
+.constructor__btn-info{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.constructor__btn-price{
+    color:#F44;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.constructor__btn-size{
+    margin-top: 2px;
+    color:#D5B4A8;
+    font-size: 12px;
+    font-weight: 600;
 }

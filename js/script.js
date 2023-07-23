@@ -19,14 +19,14 @@ const createCard = (item) => {
                 <p class="cocktail__size">${item.size}</p>
             </div>
         </div>
-        <button class="btn cocktail__btn">Добавить</button>
+        <button class="btn cocktail__btn cocktail__btn_add">Добавить</button>
     </div>
     `;
   return cocktail;
 };
 
 const modalConroller = ({ modal, btnOpen, time = 300 }) => {
-  const buttonElem = document.querySelector(btnOpen);
+  const buttonElems = document.querySelectorAll(btnOpen);
   const modalElem = document.querySelector(modal);
   modalElem.style.cssText = `
       display: flex;
@@ -43,23 +43,28 @@ const modalConroller = ({ modal, btnOpen, time = 300 }) => {
     const target = event.target;
     const code = event.code;
 
-    if (target === modalElem || code==="Escape") {
+    if (target === modalElem || code === "Escape") {
       modalElem.style.opacity = "0";
       setTimeout(() => {
         modalElem.style.visibility = "hidden";
       }, time);
     }
   };
-  buttonElem.addEventListener("click", openModal);
+  buttonElems.forEach((buttonElem)=>{
+    buttonElem.addEventListener("click", openModal);
+  })
   modalElem.addEventListener("click", closeModal);
-  window.addEventListener('keydown', closeModal);
-  
+  window.addEventListener("keydown", closeModal);
+
   return { openModal, closeModal };
 };
 
 const init = async () => {
   modalConroller({ modal: ".modal_order", btnOpen: ".header__btn-order" });
-  modalConroller({ modal: ".modal__constructor", btnOpen: ".cocktail__btn_yourself" });
+  modalConroller({
+    modal: ".modal__constructor",
+    btnOpen: ".cocktail__btn_yourself",
+  });
   const goodsListElem = document.querySelector(".goods__list");
   const data = await getData();
 
@@ -71,6 +76,7 @@ const init = async () => {
   });
 
   goodsListElem.append(...cartCocktail);
+  modalConroller({ modal: ".modal__add", btnOpen: ".cocktail__btn_add" });
 };
 
 init();
