@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/";
+const API_URL = "https://freshy-bar-api.glitch.me/";
 
 const price = {
   Клубника: 60,
@@ -11,7 +11,7 @@ const price = {
   Лед: 10,
   Биоразлагаемый: 20,
   Пластиковый: 0,
-}
+};
 
 const getData = async () => {
   const response = await fetch(`${API_URL}api/goods`);
@@ -63,18 +63,71 @@ const modalConroller = ({ modal, btnOpen, time = 300 }) => {
       }, time);
     }
   };
-  buttonElems.forEach((buttonElem)=>{
+  buttonElems.forEach((buttonElem) => {
     buttonElem.addEventListener("click", openModal);
-  })
+  });
   modalElem.addEventListener("click", closeModal);
   window.addEventListener("keydown", closeModal);
 
   return { openModal, closeModal };
 };
 
-const calculateMakeYourOwn = () =>{
-  
-}
+const getFormData = (form) => {
+  const formData = new FormData(form);
+  const data = {};
+  for (const [name, value] of formData.entries()) {
+    if (data[name]) {
+      if (!Array.isArray(data[name])) {
+        data[name] = [data[name]];
+      }
+      data[name].push(value);
+    } else {
+      data[name] = value;
+    }
+  }
+  return data;
+};
+
+const calculateTotalPrice = (form, startPrice) => {
+  let totalPrice = startPrice;
+
+  const data = getFormData(form);
+
+  if (Array.isArray(data.ingredients)) {
+    data.ingredients.forEach((item) => {
+      totalPrice += price[item] || 0;
+    });
+  } else {
+    totalPrice += price[data.ingredients] || 0;
+  }
+
+  if (Array.isArray(data.topping)) {
+    data.topping.forEach((item) => {
+      totalPrice += price[item] || 0;
+    });
+  } else {
+    totalPrice += price[data.topping] || 0;
+  }
+  totalPrice += price[data.cup] || 0;
+
+  return totalPrice;
+};
+
+const calculateMakeYourOwn = () => {
+  const formMakeOwn = document.querySelector(".make__form_make-your-own");
+  const makeInputPrice = formMakeOwn.querySelector(".make__input_price");
+  const makeTotalPrice = formMakeOwn.querySelector(".make__total-price");
+
+  const handlerChange = () => {
+    const totalPrice = calculateTotalPrice(formMakeOwn, 150);
+    makeInputPrice.value = totalPrice;
+    makeTotalPrice.textContent = `${totalPrice} ₽`;
+  };
+
+  formMakeOwn.addEventListener("change", () => {
+    handlerChange();
+  });
+};
 
 const init = async () => {
   modalConroller({ modal: ".modal_order", btnOpen: ".header__btn-order" });

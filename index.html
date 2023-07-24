@@ -84,6 +84,7 @@
             </ul>
         </div>
     </footer>
+    
     <div class="modal modal_order">
         <div class="modal__main modal__main_order">
             <div class="order">
@@ -156,7 +157,7 @@
             <div class="make">
                 <h3 class="make__title">Собери <span class="text-red">свой</span> смузи</h3>
 
-                <form action="" class="make__form">
+                <form action="" class="make__form make__form_make-your-own">
                     <fieldset class="make__fieldset make__fieldset_ingredients">
                         <label class="make__label checkbox">
                             <input type="checkbox" class="checkbox__input" name="ingredients" value="Клубника"
@@ -215,7 +216,8 @@
                     <div class="make__footer">
                         <button class="make__add-btn btn" type="submit">Добавить</button>
                         <div class="make__total">
-                            <p class="make__total-price text-red">340 ₽</p>
+                            <input type="hidden" class="make__input make__input_price" name="price" value="150">
+                            <p class="make__total-price text-red">150 ₽</p>
                             <p class="make__total-size">300мл</p>
                         </div>
                     </div>
