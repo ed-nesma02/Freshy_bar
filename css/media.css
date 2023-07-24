@@ -160,78 +160,68 @@
     margin-top: 12px;
     grid-column: 1;
   }
-  /* *modal__constructor */
 
-  .modal__main_constructor {
+  /* *modal_make */
+
+  .modal__main_make {
     max-width: 320px;
   }
 
-  .constructor {
+  .make{
     padding: 24px 15px;
-  }
+}
 
-  .constructor__title {
-    margin-bottom: 8px;
-    font-size: 24px;
-  }
+.make__title{
+  margin-bottom: 8px;
+  font-size: 24px;
+}
 
-  .constructor__main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 15px;
-    grid-template-areas:
-      "items items"
-      "extra ."
-      "cup cup";
-  }
+.make__form{
+  gap: 24px 15px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+  "ingredients ingredients "
+  "topping ."
+  "cup  cup"
+  "footer footer";
+}
 
-  .constructor__items {
-    grid-area: items;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0 15px;
-  }
+.make__fieldset_ingredients{
+  margin-top: 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 15px;
+}
 
-  .constructor__label {
-    margin-top: 12px;
-    font-size: 14px;
-  }
+.make__legend{
+  font-size: 14px;
+}
 
-  .constructor__extra_title {
-    font-size: 14px;
-  }
+.make__label{
+  margin-top: 12px;
+  font-size: 14px;
+}
 
-  .note {
-    font-size: 10px;
-  }
+.make__note{
+  font-size: 10px;
+}
 
-  .constructor__btn_row {
-    margin-top: 24px;
-  }
-  .constructor__btn {
-    width: 136px;
-  }
+.make__add-btn{
+  font-size: 14px;
+  width: 136px;
+}
 
-  .constructor__btn-info{
-    margin-left: 16px;
-  }
+.make__total{
+  margin-left: 16px;
+}
 
-  .constructor__btn-price{
-    font-size: 14px;
-  }
+.make__total-price {
+  font-size: 14px;
+}
 
-  .constructor__btn-size{
-    font-size: 10px;
-  }
-  /* *modal__add */
-  .constructor__add{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 15px;
-    grid-template-areas:
-      "extra ."
-      "cup cup";
-  }
+.make__total-size {
+  font-size: 10px;
+}
+
 }
 
 @media (max-width: 640px) {

@@ -1,4 +1,17 @@
-const API_URL = "https://freshy-bar-api.glitch.me/";
+const API_URL = "http://localhost:3000/";
+
+const price = {
+  Клубника: 60,
+  Банан: 50,
+  Манго: 70,
+  Киви: 55,
+  Маракуйя: 90,
+  Яблоко: 45,
+  Мята: 50,
+  Лед: 10,
+  Биоразлагаемый: 20,
+  Пластиковый: 0,
+}
 
 const getData = async () => {
   const response = await fetch(`${API_URL}api/goods`);
@@ -59,12 +72,16 @@ const modalConroller = ({ modal, btnOpen, time = 300 }) => {
   return { openModal, closeModal };
 };
 
+const calculateMakeYourOwn = () =>{
+  
+}
+
 const init = async () => {
   modalConroller({ modal: ".modal_order", btnOpen: ".header__btn-order" });
-  modalConroller({
-    modal: ".modal__constructor",
-    btnOpen: ".cocktail__btn_yourself",
-  });
+  modalConroller({ modal: ".modal_make", btnOpen: ".cocktail__btn_yourself" });
+
+  calculateMakeYourOwn();
+
   const goodsListElem = document.querySelector(".goods__list");
   const data = await getData();
 
@@ -76,7 +93,7 @@ const init = async () => {
   });
 
   goodsListElem.append(...cartCocktail);
-  modalConroller({ modal: ".modal__add", btnOpen: ".cocktail__btn_add" });
+  modalConroller({ modal: ".modal_add", btnOpen: ".cocktail__btn_add" });
 };
 
 init();

@@ -150,142 +150,124 @@
             </div>
         </div>
     </div>
-    <div class="modal modal__constructor">
-        <div class="modal__main modal__main_constructor">
-            <form class="constructor">
-                <h2 class="constructor__title">Собери <span class="text-red">свой</span> смузи</h2>
-                <div class="constructor__main">
-                    <ul class="constructor__items">
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Клубника
-                            </label>
-                        </li>
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Банан
-                            </label>
-                        </li>
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Манго
-                            </label>
-                        </li>
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Киви
-                            </label>
-                        </li>
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Маракуйя
-                            </label>
-                        </li>
-                        <li class="constructor__item">
-                            <label class="constructor__label">
-                                <input name="additive" type="checkbox" class="constructor__checkbox">
-                                Яблоко
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="constructor__extra">
-                        <h3 class="constructor__extra_title">Дополнительно:</h3>
-                        <ul class="constructor__extra_list">
-                            <li class="constructor__extra_item">
-                                <label class="constructor__label">
-                                    <input name="extra" type="checkbox" class="constructor__checkbox">
-                                    Мята <span class="note">(+50&nbsp;₽)</span>
-                                </label>
-                            </li>
-                            <li class="constructor__extra_item">
-                                <label class="constructor__label">
-                                    <input name="extra" type="checkbox" class="constructor__checkbox">
-                                    Лед <span class="note">(+10&nbsp;₽)</span>
-                                </label>
-                            </li>
-                        </ul>
+
+    <div class="modal modal_make">
+        <div class="modal__main modal__main_make">
+            <div class="make">
+                <h3 class="make__title">Собери <span class="text-red">свой</span> смузи</h3>
+
+                <form action="" class="make__form">
+                    <fieldset class="make__fieldset make__fieldset_ingredients">
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Клубника"
+                            >Клубника
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Банан"
+                            >Банан
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Манго"
+                            >Манго
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Киви"
+                            >Киви
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Маракуйя"
+                            >Маракуйя
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="ingredients" value="Яблоко"
+                            >Яблоко
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="make__fieldset make__fieldset_topping">
+                        <legend class="make__legend">Дополнительно:</legend>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="topping" value="Мята"
+                            >Мята
+                            <span class="make__note">(+50 ₽)</span>
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="topping" value="Лед"
+                            >Лед
+                            <span class="make__note">(+10 ₽)</span>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="make__fieldset make__fieldset_cup">
+                        <legend class="make__legend">Стакан:</legend>
+                        <label class="make__label radio">
+                            <input type="radio" class="radio__input" name="cup" value="Биоразлагаемый"
+                            >Биоразлагаемый
+                            <span class="make__note">(+20 ₽)</span>
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="radio" class="radio__input" name="cup" value="Пластиковый"
+                            >Пластиковый
+                            <span class="make__note">(+0 ₽)</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="make__footer">
+                        <button class="make__add-btn btn" type="submit">Добавить</button>
+                        <div class="make__total">
+                            <p class="make__total-price text-red">340 ₽</p>
+                            <p class="make__total-size">300мл</p>
+                        </div>
                     </div>
-                    <div class="constructor__cup">
-                        <h3 class="constructor__extra_title">Стакан:</h3>
-                        <ul class="constructor__cup_list">
-                            <li class="constructor__cup_item">
-                                <label class="constructor__label">
-                                    <input name="cup" type="radio" class="constructor__radio">
-                                    Биоразлагаемый <span class="note">(+20&nbsp;₽)</span>
-                                </label>
-                            </li>
-                            <li class="constructor__cup">
-                                <label class="constructor__label">
-                                    <input name="cup" type="radio" class="constructor__radio">
-                                    Пластиковый <span class="note">(+0&nbsp;₽)</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="constructor__btn_row">
-                    <button type="button" class="constructor__btn btn">Добавить</button>
-                    <div class="constructor__btn-info">
-                        <p class="constructor__btn-price">340 ₽</p>
-                        <p class="constructor__btn-size">300мл</p>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="modal modal__constructor modal__add">
-        <div class="modal__main modal__main_constructor">
-            <form class="constructor">
-                <h2 class="constructor__title">Банановый смузи</h2>
-                <div class="constructor__add">
-                    <div class="constructor__extra">
-                        <h3 class="constructor__extra_title">Дополнительно:</h3>
-                        <ul class="constructor__extra_list">
-                            <li class="constructor__extra_item">
-                                <label class="constructor__label">
-                                    <input name="extra" type="checkbox" class="constructor__checkbox">
-                                    Мята <span class="note">(+50&nbsp;₽)</span>
-                                </label>
-                            </li>
-                            <li class="constructor__extra_item">
-                                <label class="constructor__label">
-                                    <input name="extra" type="checkbox" class="constructor__checkbox">
-                                    Лед <span class="note">(+10&nbsp;₽)</span>
-                                </label>
-                            </li>
-                        </ul>
+
+    <div class="modal modal_add">
+        <div class="modal__main modal__main_make">
+            <div class="make">
+                <h3 class="make__title">Банановый смузи</h3>
+
+                <form action="" class="make__form make__form_add">
+
+                    <fieldset class="make__fieldset make__fieldset_topping">
+                        <legend class="make__legend">Дополнительно:</legend>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="topping" value="Мята"
+                            >Мята
+                            <span class="make__note">(+50 ₽)</span>
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="checkbox" class="checkbox__input" name="topping" value="Лед"
+                            >Лед
+                            <span class="make__note">(+10 ₽)</span>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="make__fieldset make__fieldset_cup">
+                        <legend class="make__legend">Стакан:</legend>
+                        <label class="make__label radio">
+                            <input type="radio" class="radio__input" name="cup" value="Биоразлагаемый"
+                            >Биоразлагаемый
+                            <span class="make__note">(+20 ₽)</span>
+                        </label>
+                        <label class="make__label checkbox">
+                            <input type="radio" class="radio__input" name="cup" value="Пластиковый"
+                            >Пластиковый
+                            <span class="make__note">(+0 ₽)</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="make__footer">
+                        <button class="make__add-btn btn" type="submit">Добавить</button>
+                        <div class="make__total">
+                            <p class="make__total-price text-red">340 ₽</p>
+                            <p class="make__total-size">300мл</p>
+                        </div>
                     </div>
-                    <div class="constructor__cup">
-                        <h3 class="constructor__extra_title">Стакан:</h3>
-                        <ul class="constructor__cup_list">
-                            <li class="constructor__cup_item">
-                                <label class="constructor__label">
-                                    <input name="cup" type="radio" class="constructor__radio">
-                                    Биоразлагаемый <span class="note">(+20&nbsp;₽)</span>
-                                </label>
-                            </li>
-                            <li class="constructor__cup">
-                                <label class="constructor__label">
-                                    <input name="cup" type="radio" class="constructor__radio">
-                                    Пластиковый <span class="note">(+0&nbsp;₽)</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="constructor__btn_row">
-                    <button type="button" class="constructor__btn btn">Добавить</button>
-                    <div class="constructor__btn-info">
-                        <p class="constructor__btn-price">340 ₽</p>
-                        <p class="constructor__btn-size">300мл</p>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </body>

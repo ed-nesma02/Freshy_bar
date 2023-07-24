@@ -431,170 +431,176 @@ img{
     grid-column: 2/2;
 }
 
-/* *modal__constructor */
+/* *modal_make */
 
-.modal__constructor{
+.modal_make{
     visibility: hidden;
-    transition: ease-in-out;
 }
 
-.modal__main_constructor{
+.modal__main_make{
     max-width: 640px;
 }
 
-.constructor{
+.make{
     padding: 60px 40px;
     border-radius: 24px;
     background:#F8E8E2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.constructor__title{
-    margin-bottom: 8px;
+.make__title{
+    margin-bottom: 20px;
     font-size: 44px;
     font-weight: 900;
 }
 
-.constructor__main{
+.make__form{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 32px 55px;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 
-    "items items items"
-    "extra cup cup";
+    "ingredients ingredients ingredients"
+    "topping cup cup"
+    "footer footer .";
 }
 
-.constructor__items{
-    margin-top: 12px;
-    grid-area: items;
+.make__fieldset{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.make__fieldset_ingredients{
+    margin-top: 20px;
+    grid-area: ingredients;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0 55px;
 }
 
-.constructor__label{
+.make__label {
     position: relative;
+    margin-top: 20px;
     display: block;
     padding-left: 32px;
-    margin-top: 20px;
     line-height: 24px;
     cursor: pointer;
 }
-
-.constructor__checkbox{
+.checkbox__input {
     position: absolute;
     appearance: none;
-    margin-left: -32px;
     width: 24px;
     height: 24px;
+    margin-left: -32px;
     cursor: pointer;
 }
 
-.constructor__checkbox::before{
+.checkbox__input::before{
     content: "";
     position: absolute;
     inset: 0;
+    width: 24px;
+    height: 24px;
     border-radius: 2px;
-    background-color: #fff;
+    background:#FFF;
 }
 
-.constructor__checkbox::after{
+.checkbox__input::after{
     content: "";
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     width: 12px;
     height: 15px;
     background-image: url("../img/check.svg");
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     opacity: 0;
 }
 
-.constructor__checkbox:checked::after{
+.checkbox__input:checked::after{
     opacity: 1;
 }
 
-.constructor__radio{
+.make__note{
+    color:#D5B4A8;
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.radio__input {
     position: absolute;
     appearance: none;
+    width: 24px;
+    height: 24px;
     margin-left: -32px;
     cursor: pointer;
 }
 
-.constructor__radio::before{
+.radio__input::before{
     content: "";
     position: absolute;
     inset: 0;
     width: 24px;
     height: 24px;
     border-radius: 60px;
-    background-color: #FFF;
+    background:#FFF;
 }
 
-.constructor__radio::after{
+.radio__input::after{
     content: "";
     position: absolute;
-    inset: 0;
     width: 24px;
     height: 24px;
     background-image: url("../img/radiobtn.svg");
-    background-position: center;
-    background-repeat: no-repeat;
     opacity: 0;
 }
 
-.constructor__radio:checked::after{
+.radio__input:checked::after{
     opacity: 1;
 }
 
-.constructor__extra{
-    grid-area: extra;
+.make__legend{
+    margin-bottom: 4px;
+    color: #D5B4A8;
 }
 
-.constructor__extra_title{
-    color:#D5B4A8;
-    font-size: 18px;
-    font-weight: 400;
+.make__fieldset_topping{
+    grid-area: topping;
+    display: flex;
+    flex-direction: column;
 }
 
-.note{
-    margin-left: 2px;
-    color:#D5B4A8;
-    font-size: 12px;
-}
-
-.constructor__cup{
+.make__fieldset_cup{
     grid-area: cup;
+    display: flex;
+    flex-direction: column;
 }
 
-.constructor__btn_row{
-    margin-top: 40px;
+.make__footer{
+    grid-area: footer;
     display: flex;
     align-items: center;
 }
 
-.constructor__btn{
+.make__add-btn{
     width: 232px;
 }
-
-.constructor__btn-info{
+.make__total{
     margin-left: 30px;
     display: flex;
     flex-direction: column;
     align-items: end;
 }
 
-.constructor__btn-price{
-    color:#F44;
-    font-size: 18px;
+.make__total-price {
     font-weight: 600;
 }
 
-.constructor__btn-size{
+.make__total-size {
     margin-top: 2px;
-    color:#D5B4A8;
-    font-size: 12px;
     font-weight: 600;
+    font-size: 12px;
+    color: #D5B4A8;
 }
