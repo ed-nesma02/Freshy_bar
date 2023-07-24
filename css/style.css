@@ -41,6 +41,7 @@
 
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *,
@@ -603,4 +604,10 @@ img{
     font-weight: 600;
     font-size: 12px;
     color: #D5B4A8;
+}
+
+/* *modal_add */
+
+.modal_add{
+    visibility: hidden;
 }

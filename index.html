@@ -58,7 +58,7 @@
                                 <div class="cocktail__text">
                                     <h3 class="cocktail__title">Собери сам</h3>
                                     <div class="cocktail__information">
-                                        <p class="cocktail__price">260 ₽</p>
+                                        <p class="cocktail__price">150 ₽</p>
                                         <p class="cocktail__size">300мл</p>
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
             <div class="make">
                 <h3 class="make__title">Собери <span class="text-red">свой</span> смузи</h3>
 
-                <form action="" class="make__form make__form_make-your-own">
+                <form class="make__form make__form_make-your-own">
                     <fieldset class="make__fieldset make__fieldset_ingredients">
                         <label class="make__label checkbox">
                             <input type="checkbox" class="checkbox__input" name="ingredients" value="Клубника"
@@ -207,7 +207,7 @@
                             <span class="make__note">(+20 ₽)</span>
                         </label>
                         <label class="make__label checkbox">
-                            <input type="radio" class="radio__input" name="cup" value="Пластиковый"
+                            <input type="radio" class="radio__input" name="cup" checked value="Пластиковый"
                             >Пластиковый
                             <span class="make__note">(+0 ₽)</span>
                         </label>
@@ -232,7 +232,7 @@
                 <h3 class="make__title">Банановый смузи</h3>
 
                 <form action="" class="make__form make__form_add">
-
+                    <input type="hidden" class="make__input-title" name="title">
                     <fieldset class="make__fieldset make__fieldset_topping">
                         <legend class="make__legend">Дополнительно:</legend>
                         <label class="make__label checkbox">
@@ -255,7 +255,7 @@
                             <span class="make__note">(+20 ₽)</span>
                         </label>
                         <label class="make__label checkbox">
-                            <input type="radio" class="radio__input" name="cup" value="Пластиковый"
+                            <input type="radio" class="radio__input" name="cup" checked value="Пластиковый"
                             >Пластиковый
                             <span class="make__note">(+0 ₽)</span>
                         </label>
@@ -264,7 +264,10 @@
                     <div class="make__footer">
                         <button class="make__add-btn btn" type="submit">Добавить</button>
                         <div class="make__total">
+                            <input type="hidden" class="make__input-start-price">
+                            <input type="hidden" class="make__input-price" name="price" value="340">
                             <p class="make__total-price text-red">340 ₽</p>
+                            <input type="hidden" class="make__input-size" name="size" value="300">
                             <p class="make__total-size">300мл</p>
                         </div>
                     </div>
