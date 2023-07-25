@@ -1,4 +1,4 @@
-const API_URL = "https://freshy-bar-api.glitch.me/"; //https://freshy-bar-api.glitch.me/
+const API_URL = "http://localhost:3000/"; //https://freshy-bar-api.glitch.me/
 
 const price = {
   Клубника: 60,
@@ -11,6 +11,29 @@ const price = {
   Лед: 10,
   Биоразлагаемый: 20,
   Пластиковый: 0,
+};
+
+const cartDataControl = {
+  get() {
+    return JSON.parse(localStorage.getItem("FreshyBarCart") || "[]");
+  },
+  add(item) {
+    const cartData = this.get();
+    item.idls = Math.random().toString(36).substring(2, 8);
+    cartData.push(item);
+    localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
+  },
+  remove(idls) {
+    const cartData = this.get();
+    const index = cartData.findIndex((item) => item.idls === idls);
+    if (index !== -1) {
+      cartData.splice(index, -1);
+    }
+    localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
+  },
+  clear() {
+    localStorage.removeItem("FreshyBarCart");
+  },
 };
 
 const getData = async () => {
@@ -54,7 +77,7 @@ const scrollService = {
   },
   enabledScroll() {
     document.body.style.cssText = "";
-    window.scroll({top: this.scrollPosition})
+    window.scroll({ top: this.scrollPosition });
     document.documentElement.style.scrollBehavior = "";
   },
 };
@@ -82,7 +105,7 @@ const modalConroller = ({ modal, btnOpen, time = 300, open, close }) => {
     const target = event.target;
     const code = event.code;
 
-    if (target === modalElem || code === "Escape") {
+    if (event === "close" || target === modalElem || code === "Escape") {
       modalElem.style.opacity = "0";
       setTimeout(() => {
         modalElem.style.visibility = "hidden";
@@ -98,6 +121,9 @@ const modalConroller = ({ modal, btnOpen, time = 300, open, close }) => {
     buttonElem.addEventListener("click", openModal);
   });
   modalElem.addEventListener("click", closeModal);
+
+  modalElem.openModal = openModal;
+  modalElem.closeModal = closeModal;
 
   return { openModal, closeModal };
 };
@@ -143,20 +169,59 @@ const calculateTotalPrice = (form, startPrice) => {
   return totalPrice;
 };
 
+const formControl = (form, cb) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = getFormData(form);
+    cartDataControl.add(data);
+
+    if (cb) {
+      cb();
+    }
+  });
+};
+
 const calculateMakeYourOwn = () => {
-  const formMakeOwn = document.querySelector(".make__form_make-your-own");
-  const makeInputPrice = formMakeOwn.querySelector(".make__input_price");
-  const makeTotalPrice = formMakeOwn.querySelector(".make__total-price");
+  const modalMake = document.querySelector(".modal_make");
+  const makeInputTitle = modalMake.querySelector(".make__input-title");
+  const formMakeOwn = modalMake.querySelector(".make__form_make-your-own");
+  const makeInputPrice = modalMake.querySelector(".make__input_price");
+  const makeTotalPrice = modalMake.querySelector(".make__total-price");
+  const makeAddBbtn = modalMake.querySelector(".make__add-btn");
 
   const handlerChange = () => {
     const totalPrice = calculateTotalPrice(formMakeOwn, 150);
+
+    const data = getFormData(formMakeOwn);
+
+    if (data.ingredients) {
+      const ingredients = Array.isArray(data.ingredients)
+        ? data.ingredients.join(", ")
+        : data.ingredients;
+
+      makeInputTitle.value = `Конструктор: ${ingredients}`;
+      makeAddBbtn.disabled = false;
+    } else {
+      makeAddBbtn.disabled = true;
+    }
+
     makeInputPrice.value = totalPrice;
     makeTotalPrice.textContent = `${totalPrice} ₽`;
   };
 
-  formMakeOwn.addEventListener("change", () => {
-    handlerChange();
+  formMakeOwn.addEventListener("change", handlerChange);
+  formControl(formMakeOwn, () => {
+    modalMake.closeModal("close");
   });
+  handlerChange();
+
+  const resetForm = () => {
+    makeTotalPrice.textContent = "150";
+    makeAddBbtn.disabled = true;
+    formMakeOwn.reset();
+  };
+
+  return { resetForm };
 };
 
 const calculateAdd = () => {
@@ -179,6 +244,9 @@ const calculateAdd = () => {
   };
 
   formAdd.addEventListener("change", handlerChange);
+  formControl(formAdd, () => {
+    modalAdd.closeModal("close");
+  });
 
   const fillInForm = (data) => {
     makeTitle.textContent = data.title;
@@ -193,7 +261,7 @@ const calculateAdd = () => {
 
   const resetForm = () => {
     makeTitle.textContent = "";
-    makeTotalPrice.innerHTML = "";
+    makeTotalPrice.textContent = "";
     makeTotalSize.textContent = "";
     formAdd.reset();
   };
@@ -201,15 +269,100 @@ const calculateAdd = () => {
   return { fillInForm, resetForm };
 };
 
-const init = async () => {
-  modalConroller({ modal: ".modal_order", btnOpen: ".header__btn-order" });
-  modalConroller({ modal: ".modal_make", btnOpen: ".cocktail__btn_yourself" });
+const createCartItem = (item) => {
+  const li = document.createElement("li");
+  li.classList.add("order__item");
+  li.innerHTML = `
+  <img src="img/make-your-own.png" alt="${item.title}" class="order__img">
+  <div class="order__info">
+      <h3 class="order__name">${item.title}</h3>
+      <ul class="order__topping-list">
+          <li class="order__topping-item">${item.size}</li>
+          <li class="order__topping-item">${item.cup}</li>
+          ${
+            item.topping
+              ? Array.isArray(item.topping)
+                ? item.topping.map(
+                    (topping) =>
+                      `<li class="order__topping-item">${topping}</li>`
+                  )
+                : `<li class="order__topping-item">${item.topping}</li>`
+              : ""
+          }
+      </ul>
+  </div>
+  <button class="order__item-delete" aria-label="Удалить коктейл из корзины" data-idls="${
+    item.idls
+  }"></button>
+  <p class="order__item-price">${item.price}&nbsp;₽</p>
+  `;
 
-  calculateMakeYourOwn();
+  return li;
+};
+
+const renderCart = () => {
+  const modalOrder = document.querySelector(".modal_order");
+  const orderCount = modalOrder.querySelector(".order_count");
+  const orderList = modalOrder.querySelector(".order__list");
+  const orderTotalPrice = modalOrder.querySelector(".order__total-price");
+  const orderForm = modalOrder.querySelector(".order__form");
+
+  const orderListData = cartDataControl.get();
+
+  orderList.textContent = "";
+  orderCount.textContent = `(${orderListData.length})`;
+  orderListData.forEach((item) => {
+    orderList.append(createCartItem(item));
+  });
+
+  orderTotalPrice.textContent = `${orderListData.reduce(
+    (acc, item) => acc + +item.price,
+    0
+  )} ₽`;
+
+  orderForm.addEventListener("submit", async (event) => {
+    event.preventDefault;
+    if (!orderListData.length) {
+      return alert("Корзина пустая");
+    } else {
+      const data = getFormData(orderForm);
+      const response = await fetch(`${API_URL}api/order`, {
+        method: "Post",
+        body: JSON.stringify({
+          ...data,
+          products: orderListData,
+        }),
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+      const {message} = await response.json();
+      alert(message);
+      cartDataControl.clear();
+      orderForm.reset();
+      modalOrder.close("close");
+    }
+  });
+};
+
+const init = async () => {
+  modalConroller({
+    modal: ".modal_order",
+    btnOpen: ".header__btn-order",
+    open: renderCart,
+  });
+
+  const { resetForm: resetFormMakeYourOwn } = calculateMakeYourOwn();
+
+  modalConroller({
+    modal: ".modal_make",
+    btnOpen: ".cocktail__btn_yourself",
+    close: resetFormMakeYourOwn,
+  });
 
   const goodsListElem = document.querySelector(".goods__list");
   const data = await getData();
-  
+
   const cartCocktail = data.map((item) => {
     const li = document.createElement("li");
     li.classList.add("goods__item");
@@ -219,7 +372,7 @@ const init = async () => {
 
   goodsListElem.append(...cartCocktail);
 
-  const { fillInForm, resetForm } = calculateAdd();
+  const { fillInForm: fillInFormAdd, resetForm: resetFormAdd } = calculateAdd();
 
   modalConroller({
     modal: ".modal_add",
@@ -227,9 +380,9 @@ const init = async () => {
     open({ btn }) {
       const id = btn.dataset.id;
       const item = data.find((item) => item.id.toString() === id);
-      fillInForm(item);
+      fillInFormAdd(item);
     },
-    close: resetForm,
+    close: resetFormAdd,
   });
 };
 
