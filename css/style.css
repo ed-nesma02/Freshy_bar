@@ -109,6 +109,20 @@ img{
     background:#FF6767;
 }
 
+.btn:disabled{
+    background-color: #C1C1C1;
+    box-shadow: none;
+}
+
+.btn_active{
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 40px;
+    background:#52E36A;
+    box-shadow: 0px 4px 20px 0px #52E36A;
+}
+
 .text-red {
     color: #F44;
 }
@@ -384,8 +398,15 @@ img{
     grid-area: delete;
     width: 24px;
     height: 24px;
-    background: url("../img/delete.svg");
     justify-self: end;
+}
+
+.order__item-delete svg path{
+    transition: fill 0.2s ease-in;
+}
+
+.order__item-delete:hover svg path{
+    fill: #000000;
 }
 
 .order__item-price{
