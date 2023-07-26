@@ -390,7 +390,7 @@ const renderCart = () => {
   });
 
   orderForm.addEventListener("submit", async (event) => {
-    event.preventDefault;
+    event.preventDefault();
     if (!orderListData.length) {
       return alert("Корзина пустая");
     } else {
@@ -402,12 +402,12 @@ const renderCart = () => {
           products: orderListData,
         }),
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
       });
       cartDataControl.clear();
       orderForm.reset();
-      modalOrder.close("close");
+      modalOrder.closeModal("close");
     }
   });
 };
