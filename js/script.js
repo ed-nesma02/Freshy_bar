@@ -1,4 +1,4 @@
-const API_URL = "https://freshy-bar-api.glitch.me/"; //https://freshy-bar-api.glitch.me/
+const API_URL = "http://localhost:3000/"; //https://freshy-bar-api.glitch.me/
 
 const price = {
   Клубника: 60,
@@ -23,6 +23,7 @@ const cartDataControl = {
     cartData.push(item);
     localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
     initCountCart(cartData.length);
+    refreshBtnCount();
   },
   remove(idls) {
     const cartData = this.get();
@@ -32,10 +33,12 @@ const cartDataControl = {
     }
     localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
     initCountCart(cartData.length);
+    refreshBtnCount();
   },
   clear() {
     localStorage.removeItem("FreshyBarCart");
     initCountCart(0);
+    refreshBtnCount();
   },
 };
 
@@ -46,10 +49,19 @@ const getData = async () => {
 };
 
 const createCard = (item) => {
+  let countItem = 0;
+  cartDataControl.get().forEach((title) => {
+    if (title.title === item.title) {
+      countItem += 1;
+    }
+  });
+
   const cocktail = document.createElement("article");
   cocktail.classList.add("cocktail");
   cocktail.innerHTML = `
-    <img src="${API_URL}${item.image}" alt="${item.title}" class="cocktail__img">
+    <img src="${API_URL}${item.image}" alt="${
+    item.title
+  }" class="cocktail__img">
     <div class="cocktail__content">
         <div class="cocktail__text">
             <h3 class="cocktail__title">${item.title}</h3>
@@ -58,10 +70,39 @@ const createCard = (item) => {
                 <p class="cocktail__size">${item.size}</p>
             </div>
         </div>
-        <button class="btn cocktail__btn cocktail__btn_add" data-id="${item.id}">Добавить</button>
+        ${
+          countItem
+            ? `<button class="btn_active cocktail__btn cocktail__btn_add" data-id="${item.id}">В корзине<sup>(${countItem})</sup></button>`
+            : `<button class="btn cocktail__btn cocktail__btn_add" data-id="${item.id}">Добавить</button>`
+        }
     </div>
     `;
   return cocktail;
+};
+
+const refreshBtnCount = async () => {
+  const liItem = document.querySelectorAll(".goods__item");
+  liItem.forEach((item) => {
+    let countItem = 0;
+    const btnItem = item.querySelector(".cocktail__btn_add");
+    const inputTitle = item.querySelector(".cocktail__title");
+    cartDataControl.get().forEach((title) => {
+      if (title.title === inputTitle.textContent) {
+        countItem += 1;
+      }
+    });
+
+    if (btnItem && countItem) {
+      console.log(btnItem);
+      btnItem.innerHTML = `В корзине<sup>(${countItem})`;
+      btnItem.classList.remove("btn");
+      btnItem.classList.add("btn_active");
+    } else if (btnItem) {
+      btnItem.classList.add("btn");
+      btnItem.classList.remove("btn_active");
+      btnItem.innerHTML = "Добавить";
+    }
+  });
 };
 
 const scrollService = {
@@ -229,7 +270,7 @@ const calculateMakeYourOwn = () => {
 
 const calculateAdd = () => {
   const modalAdd = document.querySelector(".modal_add");
-  const formAdd = document.querySelector(".make__form_add");
+  const formAdd = modalAdd.querySelector(".make__form_add");
   const makeTitle = modalAdd.querySelector(".make__title");
   const makeInputStartPrice = modalAdd.querySelector(
     ".make__input-start-price"
@@ -239,6 +280,7 @@ const calculateAdd = () => {
   const makeTotalPrice = modalAdd.querySelector(".make__total-price");
   const makeInputSize = modalAdd.querySelector(".make__input-size");
   const makeTotalSize = modalAdd.querySelector(".make__total-size");
+  const makeInputImg = modalAdd.querySelector(".make__input-img");
 
   const handlerChange = () => {
     const totalPrice = calculateTotalPrice(formAdd, +makeInputStartPrice.value);
@@ -259,6 +301,7 @@ const calculateAdd = () => {
     makeTotalPrice.textContent = `${data.price} ₽`;
     makeInputSize.value = data.size;
     makeTotalSize.textContent = data.size;
+    makeInputImg.value = data.image;
     handlerChange();
   };
 
@@ -276,7 +319,9 @@ const createCartItem = (item) => {
   const li = document.createElement("li");
   li.classList.add("order__item");
   li.innerHTML = `
-  <img src="img/make-your-own.png" alt="${item.title}" class="order__img">
+  <img src="${
+    item.img ? `${API_URL}${item.img}` : "img/make-your-own.png"
+  }" alt="${item.title}" class="order__img">
   <div class="order__info">
       <h3 class="order__name">${item.title}</h3>
       <ul class="order__topping-list">
@@ -285,10 +330,13 @@ const createCartItem = (item) => {
           ${
             item.topping
               ? Array.isArray(item.topping)
-                ? item.topping.map(
-                    (topping) =>
-                      `<li class="order__topping-item">${topping}</li>`
-                  ).toString().replace(",", "")
+                ? item.topping
+                    .map(
+                      (topping) =>
+                        `<li class="order__topping-item">${topping}</li>`
+                    )
+                    .toString()
+                    .replace(",", "")
                 : `<li class="order__topping-item">${item.topping}</li>`
               : ""
           }
@@ -335,12 +383,12 @@ const renderCart = () => {
   )} ₽`;
 
   const orderItemDelete = modalOrder.querySelectorAll(".order__item-delete");
-  orderItemDelete.forEach((item)=>{
-    item.addEventListener("click", ()=>{
+  orderItemDelete.forEach((item) => {
+    item.addEventListener("click", () => {
       cartDataControl.remove(item.dataset.idls);
       renderCart();
-    })
-  })
+    });
+  });
 
   orderForm.addEventListener("submit", async (event) => {
     event.preventDefault;
@@ -367,7 +415,7 @@ const renderCart = () => {
 
 const initCountCart = (count) => {
   const headerBtnOrder = document.querySelector(".header__btn-order");
-  headerBtnOrder.dataset.count = (count || cartDataControl.get().length);
+  headerBtnOrder.dataset.count = count || cartDataControl.get().length;
 };
 
 const init = async () => {

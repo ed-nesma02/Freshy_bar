@@ -114,6 +114,15 @@ img{
     box-shadow: none;
 }
 
+.btn:focus{
+    padding: 12px 28px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 40px;
+    background:#52E36A;
+    box-shadow: 0px 4px 20px 0px #52E36A;
+}
+
 .btn_active{
     padding: 12px 28px;
     font-weight: 600;
