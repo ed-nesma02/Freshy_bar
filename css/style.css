@@ -120,11 +120,7 @@ img {
   box-shadow: none;
 }
 
-.btn:focus {
-  padding: 12px 28px;
-  font-weight: 600;
-  color: #fff;
-  border-radius: 40px;
+.btn:active {
   background: #52e36a;
   box-shadow: 0px 4px 20px 0px #52e36a;
 }
@@ -261,6 +257,7 @@ img {
   filter: drop-shadow(0px 10px 30px rgba(164, 7, 2, 0.5));
   top: 19%;
   left: -6%;
+  animation: flying01 1s ease-in-out;
 }
 
 .decor__img_02 {
@@ -270,6 +267,7 @@ img {
   filter: drop-shadow(0px 4px 20px rgba(17, 7, 108, 0.5));
   right: 6%;
   top: 11%;
+  animation: flying02 1s ease-in-out;
 }
 
 .decor__img_03 {
@@ -279,6 +277,7 @@ img {
   filter: drop-shadow(0px 4px 20px rgba(223, 97, 15, 0.4));
   top: 34%;
   right: 0%;
+  animation: flying03 1s ease-in-out;
 }
 
 .decor__img_04 {
@@ -288,6 +287,7 @@ img {
   filter: drop-shadow(0px 4px 20px rgba(223, 97, 15, 0.4));
   top: 49%;
   left: 36%;
+  animation: flying04 1s ease-in-out;
 }
 
 .decor__img_05 {
@@ -297,6 +297,7 @@ img {
   filter: drop-shadow(0px 4px 20px rgba(1, 30, 82, 0.5));
   left: 27%;
   bottom: -4%;
+  animation: flying05 1s ease-in-out;
 }
 
 .decor__img_06 {
@@ -307,6 +308,7 @@ img {
   filter: drop-shadow(0px 10px 30px rgba(164, 7, 2, 0.5));
   bottom: -10%;
   right: -5%;
+  animation: flying06 1s ease-in-out;
 }
 
 /* *goods */
@@ -724,4 +726,67 @@ img {
 
 .modal_add {
   visibility: hidden;
+}
+
+@keyframes flying01 {
+    0%{
+        top: -100%;
+        left: -100%;
+    }
+    100%{
+        top: 19%;
+        left: -6%;
+    }
+}
+
+@keyframes flying02 {
+    0%{
+        right: -100%;
+        top: -100%;
+    }
+    100%{   
+        right: 6%;
+        top: 11%;
+    }
+}
+@keyframes flying03 {
+    0%{
+        top: 34%;
+        right: -100%;
+    }
+    100%{
+        top: 34%;
+        right: 0%;
+    }
+}
+@keyframes flying04 {
+    0%{
+        top: -150%;
+        left: 50%;
+    }
+    100%{
+        top: 49%;
+        left: 36%;
+    }
+}
+@keyframes flying05 {
+    0%{
+        left: -100%;
+        bottom: -100%;
+    }
+    100%{
+        left: 27%;
+        bottom: -4%;
+    }
+}
+
+@keyframes flying06 {
+    0%{
+        bottom: -100%;
+        right: -100%;
+    }
+    100%{
+        bottom: -10%;
+        right: -5%;
+    }
 }

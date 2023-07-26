@@ -93,7 +93,6 @@ const refreshBtnCount = async () => {
     });
 
     if (btnItem && countItem) {
-      console.log(btnItem);
       btnItem.innerHTML = `В корзине<sup>(${countItem})`;
       btnItem.classList.remove("btn");
       btnItem.classList.add("btn_active");
