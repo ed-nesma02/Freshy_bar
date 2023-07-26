@@ -151,8 +151,10 @@ img{
     height: 24px;
 }
 
-.header__btn-count{
+.header__btn-order::after{
+    content: attr(data-count);
     position: absolute;
+    display: block;
     width: 16px;
     height: 16px;
     text-align: center;
@@ -164,6 +166,10 @@ img{
     border-radius: 50%;
     background:#F44;
     border:2px solid #F8E8E2;
+}
+
+.header__btn-order[data-count="0"]::after {
+    display: none;
 }
 
 .header__btn {

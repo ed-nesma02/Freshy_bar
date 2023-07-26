@@ -22,7 +22,7 @@ const cartDataControl = {
     item.idls = Math.random().toString(36).substring(2, 8);
     cartData.push(item);
     localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
-    initCountCart();
+    initCountCart(cartData.length);
   },
   remove(idls) {
     const cartData = this.get();
@@ -31,11 +31,11 @@ const cartDataControl = {
       cartData.splice(index, 1);
     }
     localStorage.setItem("FreshyBarCart", JSON.stringify(cartData));
-    initCountCart();
+    initCountCart(cartData.length);
   },
   clear() {
     localStorage.removeItem("FreshyBarCart");
-    initCountCart();
+    initCountCart(0);
   },
 };
 
@@ -288,7 +288,7 @@ const createCartItem = (item) => {
                 ? item.topping.map(
                     (topping) =>
                       `<li class="order__topping-item">${topping}</li>`
-                  )
+                  ).toString().replace(",", "")
                 : `<li class="order__topping-item">${item.topping}</li>`
               : ""
           }
@@ -365,20 +365,9 @@ const renderCart = () => {
   });
 };
 
-const initCountCart = () => {
+const initCountCart = (count) => {
   const headerBtnOrder = document.querySelector(".header__btn-order");
-  const span = document.createElement("span");
-
-  const countCart = cartDataControl.get();
-
-  if (countCart.length ) {
-    span.classList.add("header__btn-count");
-    span.innerHTML = countCart.length;
-    headerBtnOrder.append(span);
-  }else if(span){
-    headerBtnOrder.append(span);
-    document.querySelector(".header__btn-order > span").remove();
-  }
+  headerBtnOrder.dataset.count = (count || cartDataControl.get().length);
 };
 
 const init = async () => {
