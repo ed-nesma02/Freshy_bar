@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/"; //https://freshy-bar-api.glitch.me/
+const API_URL = "https://freshy-bar-api.glitch.me/"; //https://freshy-bar-api.glitch.me/
 
 const price = {
   Клубника: 60,
