@@ -1,4 +1,4 @@
-const API_URL = "https://freshy-bar-api.glitch.me/"; //https://freshy-bar-api.glitch.me/
+const API_URL = "https://north-chipped-comic.glitch.me/";  //https://north-chipped-comic.glitch.me/
 
 const price = {
   Клубника: 60,
@@ -390,25 +390,32 @@ const renderCart = () => {
   });
 
   orderForm.addEventListener("submit", async (event) => {
+    const orderListData = cartDataControl.get();
     event.preventDefault();
     if (!orderListData.length) {
-      return alert("Корзина пустая");
-    } else {
-      const data = getFormData(orderForm);
-      const response = await fetch(`${API_URL}api/order`, {
-        method: "Post",
-        body: JSON.stringify({
-          ...data,
-          products: orderListData,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      cartDataControl.clear();
+      console.log("Корзина пустая");
       orderForm.reset();
       modalOrder.closeModal("close");
+      return;
     }
+
+    const data = getFormData(orderForm);
+    const response = await fetch(`${API_URL}api/order`, {
+      method: "POST",
+      body: JSON.stringify({
+        ...data,
+        products: orderListData,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const { message } = await response.json();
+    console.log(message);
+    cartDataControl.clear();
+    orderForm.reset();
+    modalOrder.closeModal("close");
   });
 };
 
