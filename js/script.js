@@ -1,4 +1,4 @@
-const API_URL = "https://north-chipped-comic.glitch.me/";  //https://north-chipped-comic.glitch.me/
+const API_URL = "https://north-chipped-comic.glitch.me/";  
 
 const price = {
   Клубника: 60,
@@ -393,9 +393,24 @@ const renderCart = () => {
     const orderListData = cartDataControl.get();
     event.preventDefault();
     if (!orderListData.length) {
-      console.log("Корзина пустая");
+      const modalElem = document.querySelector(".modal_notification");
+      const notificationText = modalElem.querySelector(".notification__text")
+      modalElem.style.cssText = `
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+      `;
+      notificationText.innerHTML = "Корзина пустая!"
+      modalElem.style.visibility = "visible";
+      modalElem.style.opacity = "1";
+      setTimeout(()=>{
+        modalElem.style.opacity = "0";
+        setTimeout(()=>{
+          modalElem.style.visibility = "hidden";
+        },300)
+      },1000);
       orderForm.reset();
-      modalOrder.closeModal("close");
       return;
     }
 
@@ -410,12 +425,30 @@ const renderCart = () => {
         "Content-Type": "application/json",
       },
     });
-
+    const modalElem = document.querySelector(".modal_notification");
+      const notificationText = modalElem.querySelector(".notification__text")
+      modalElem.style.cssText = `
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+      `;
+      notificationText.innerHTML = "Заказ принят ✓"
+      modalElem.style.visibility = "visible";
+      modalElem.style.opacity = "1";
+      setTimeout(()=>{
+        modalElem.style.opacity = "0";
+        setTimeout(()=>{
+          modalElem.style.visibility = "hidden";
+        },300)
+      },1000);
     const { message } = await response.json();
     console.log(message);
     cartDataControl.clear();
     orderForm.reset();
-    modalOrder.closeModal("close");
+    setTimeout(()=>{
+      modalOrder.closeModal("close");
+    },1000)
   });
 };
 

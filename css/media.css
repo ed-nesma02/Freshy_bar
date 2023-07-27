@@ -343,6 +343,13 @@
   .make__total-size {
     font-size: 10px;
   }
+
+  .modal__main_notification {
+    max-width: 190px;
+  }
+  .notification__text{
+    font-size: 14px;
+}
 }
 
 @media (max-width: 640px) {

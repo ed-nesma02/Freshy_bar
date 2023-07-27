@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshy Bar</title>
-    <!-- <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin> -->
+    <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
     <script src="js/script.js" defer></script>
+    <script src="js/maskPhone.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -150,7 +151,7 @@
                         <input type="text" placeholder="Ваше имя" required name="name" class="order__input">
                     </label>
                     <label  class="order__label">
-                        <input type="text" placeholder="Телефон" required name="phone" class="order__input">
+                        <input type="text" placeholder="Телефон" data-phone-pattern required name="phone" class="order__input">
                     </label>
                     <button class="order__submit btn" aria-label="Заказать" type="submit">Заказать</button>
                 </form>
@@ -239,7 +240,7 @@
             <div class="make">
                 <h3 class="make__title">Банановый смузи</h3>
 
-                <form action="" class="make__form make__form_add">
+                <form class="make__form make__form_add">
                     <input type="hidden" class="make__input-img" name="img">
                     <input type="hidden" class="make__input-title" name="title">
                     <fieldset class="make__fieldset make__fieldset_topping">
@@ -282,6 +283,14 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+
+    <div class="modal modal_notification">
+        <div class="modal__main modal__main_notification">
+           <div class="notification">
+            <p class="notification__text">Заказ отправлен.</p>
+           </div>
         </div>
     </div>
 </body>
